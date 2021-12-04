@@ -1,0 +1,92 @@
+<div class="alert alert-success" *ngIf = "message">
+    {{message}}
+</div>
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let product of products">
+            <div class="card mb-2 mt-4">
+                <!-- <img [src]="" 
+                    alt="" 
+                    height="150px" 
+                    width="100%"> -->
+                <div class="card-body">
+                    <div><b>productId: </b>{{product.productId}}</div>
+                    <div><b>productName: </b>{{product.productName}}</div>
+                    <div><b>category: </b>{{product.category}}</div>
+                    <div><b>company: </b>{{product.company}}</div>
+                    <div><b>quantity: </b>{{product.quantity}}</div>
+                    <div><b>price: </b>{{product.price | currency:'INR'}}</div>
+                </div>
+                <div class="col-4">
+                    <button (click)="onClick(product)" class="btn btn-primary btn-block btn-lg">AddToCart</button>
+                </div><br>
+                <button  class="btn btn-warning col-4" data-bs-toggle="modal" data-bs-target="#updateProductModel"
+                    (click)= "onEditProduct(product)">
+                        Update
+                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateProductModel" tabindex="-1" aria-labelledby="updateProductModelLable" 
+aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="card-header text-success text-center fw-bolder">update product</div>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success" *ngIf = 'message'>
+                {{message}}
+            </div>
+            <form action=""  #editProductForm ="ngForm" (ngSubmit)="onFormSubmit()"
+            *ngIf="selectedProductToEdit && !productUpdating">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="">product Id</label>
+                    <input type="text" name="productId" id="productId" class="form-control" #productId ngModel
+                    [(ngModel)]="selectedProductToEdit.productId">
+                 </div>
+                <div class="form-group">
+                   <label for="">product name</label>
+                   <input type="text" name="productName" id="productName" class="form-control" #productName ngModel
+                   [(ngModel)]="selectedProductToEdit.productName">
+                </div>
+                <div class="form-group">
+                    <label for="">product category</label>
+                    <input type="text" name="category" id="category" class="form-control" #category ngModel
+                    [(ngModel)]="selectedProductToEdit.category">
+                 </div>
+                 <div class="form-group">
+                    <label for="">product company</label>
+                    <input type="text" name="company" id="company" class="form-control" #company ngModel
+                    [(ngModel)]="selectedProductToEdit.company">
+                 </div>
+                     <div class="form-group">
+                            <label for="">product price</label>
+                            <input type="text" name="price" id="price" class="form-control" #price ngModel
+                            [(ngModel)]="selectedProductToEdit.price">
+                         </div>
+                         <div class="form-group">
+                                <label for="">product Quatity</label>
+                                <input type="text" name="quantity" id="quantity" class="form-control" #quantity ngModel
+                                [(ngModel)]="selectedProductToEdit.quantity">
+                             </div>
+                             </div>
+                             <div class="card-footer">
+                                <div class="button-group float-right">
+                                    <button type="submit" class="btn btn-secondary">submit</button>
+                                    <button type="reset" class="btn btn-primary">reset</button>
+                     </div>
+                            
+            </div>
+    
+</div>
+</form></div></div></div>
