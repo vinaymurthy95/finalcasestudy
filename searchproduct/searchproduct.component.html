@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <div style="text-align: center;">
+        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Search Products
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item" >searchProductByName</a></li>
+            <li><a class="dropdown-item" > searchProductByCategory</a></li>
+            <li><a class="dropdown-item" >searchProductByCompany</a></li>
+          </ul><br>
+          <input type="text" placeholder="value" style="background-color: antiquewhite;" [(ngModel)]="searchText"><br>
+          <button  (click)="searchByName()" >search</button>
+        </div> 
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+<div class="wrapper">
+  <div class="row">
+      <div class="col-md-3" *ngFor="let product of productsByName">
+          <div class="card mb-2 mt-4">
+              <img [src]="" 
+                  alt="" 
+                  height="150px" 
+                  width="100%">
+              <div class="card-body">
+                  <div><b>productId: </b>{{product.productId}}</div>
+                  <div><b>productName: </b>{{product.productName}}</div>
+                  <div><b>category: </b>{{product.category}}</div>
+                  <div><b>company: </b>{{product.company}}</div>
+                  <div><b>quantity: </b>{{product.quantity}}</div>
+                  <div><b>price: </b>{{product.price | currency:'INR'}}</div>
+              </div>
+              <!-- <div class="col-4">
+                  <button (click)="onClick(product)" class="btn btn-primary btn-block btn-lg">AddToCart</button>
+              </div> -->
+          </div>
+      </div>
+  </div>
+</div>
+
+  

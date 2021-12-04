@@ -1,0 +1,26 @@
+<div class="alert alert-success" *ngIf = "message">
+    {{message}}
+</div>
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let cartproduct of cartproducts">
+            <div class="card mb-2 mt-4">
+                <!-- <img [src]="" 
+                    alt="" 
+                    height="150px" 
+                    width="100%"> -->
+                <div class="card-body">
+                    <div><b>productId: </b>{{cartproduct.productId}}</div>
+                    <div><b>productName: </b>{{cartproduct.productName}}</div>
+                    <div><b>quantity: </b>{{cartproduct.cartQuantity}}</div>
+                    <div><b>price: </b>{{cartproduct.price | currency:'INR'}}</div>
+                </div>
+                <div class="col-4">
+                    <button (click)="generateBill(cartproduct)" class="btn btn-danger btn-block btn-lg">GenerateBill</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
